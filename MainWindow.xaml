@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Arts_Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Загадки мудр | Головне меню" Height="600" Width="810"
+        MinHeight="600" MinWidth="800">
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Image HorizontalAlignment="Stretch"
+               Margin="15,10,15,0" 
+               VerticalAlignment="Top" 
+               Source="res/img/logo.png"
+               Grid.Column="0"
+               Grid.Row="0"
+               Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+        <Label Content="Label" 
+               Grid.Column="1" 
+               HorizontalAlignment="Left" 
+               Margin="123,99,0,0" 
+               Grid.Row="1" 
+               VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
