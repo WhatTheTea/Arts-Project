@@ -16,20 +16,19 @@ using System.Windows.Shapes;
 namespace Arts_Project
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для StartPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StartPage : Page
     {
-        public MainWindow()
+        public static event EventHandler PageChanging;
+        public StartPage()
         {
             InitializeComponent();
-            StartPage.PageChanging += ChangePage;
-            this.Content = new StartPage();
         }
 
-        void ChangePage(object page, EventArgs e)
+        private void game_start_button_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = page;
+            PageChanging.Invoke(new Game1_Hand(), new EventArgs());
         }
     }
 }
