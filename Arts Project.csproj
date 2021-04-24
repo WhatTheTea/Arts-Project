@@ -114,5 +114,19 @@
   <ItemGroup>
     <Resource Include="res\img\text.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\img\fire.png" />
+    <Resource Include="res\img\ingot.png" />
+    <Resource Include="res\img\soil.png" />
+    <Resource Include="res\img\water.png" />
+    <Resource Include="res\img\wind.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\img\fingers\finger_1.png" />
+    <Resource Include="res\img\fingers\finger_2.png" />
+    <Resource Include="res\img\fingers\finger_3.png" />
+    <Resource Include="res\img\fingers\finger_4.png" />
+    <Resource Include="res\img\fingers\finger_5.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
