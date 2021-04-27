@@ -20,6 +20,7 @@ namespace Arts_Project
 	/// </summary>
 	public partial class Game1_Hand : Page
 	{
+		public static event EventHandler<PageChangingEventArgs> PageChanging;
 		private List<Image> elements, fingers;
 		private Dictionary<Image, ImageSource> elements_source_og;
 		private Image dragdrop_img;
@@ -75,8 +76,33 @@ namespace Arts_Project
 		{
 			e.Effects = DragDropEffects.Move;
 		}
-		
-		private void element_MouseDown(object sender, MouseButtonEventArgs e)
+
+        private void CheckAnswers_Click(object sender, RoutedEventArgs e)
+        {
+			bool IsFirstCorrect, IsSecondCorrect, IsThirdCorrect, IsFourthCorrect, IsFifthCorrect;
+			IsFirstCorrect = finger_first.Source == water_img.Source;
+			IsSecondCorrect = finger_second.Source == ingot_img.Source;
+			IsThirdCorrect = finger_third.Source == soil_img.Source;
+			IsFourthCorrect = finger_fourth.Source == fire_img.Source;
+			IsFifthCorrect = finger_fifth.Source == wind_img.Source;
+			bool IsAnswersCorrect = IsFirstCorrect && IsSecondCorrect && IsThirdCorrect && IsFourthCorrect && IsFifthCorrect;
+
+            if (IsAnswersCorrect)
+            {
+                MessageBox.Show($"Ви успішно завершили першу гру\nВаш баланс поповнено на NUMBER мудр", "Вітання", MessageBoxButton.OK, MessageBoxImage.Information);
+				//
+				////Пополнение баланса
+				//
+				PageChanging.Invoke(new Game1_Hand(), new PageChangingEventArgs(new StartPage()));
+            } else
+            {
+				MessageBox.Show("На жаль, ви не вгадали за що відповідають пальці\n" +
+					$"Правильних відповідей: NUMBER\n" +
+					$"З вашого балансу знято NUMBER мудри","Подумайте ще", MessageBoxButton.OK,MessageBoxImage.Error);
+            }
+        }
+
+        private void element_MouseDown(object sender, MouseButtonEventArgs e)
 		{
 			Image finger = (from img in fingers
 							where img.Source == ((Image)sender).Source

@@ -20,7 +20,7 @@ namespace Arts_Project
     /// </summary>
     public partial class StartPage : Page
     {
-        public static event EventHandler PageChanging;
+        public static event EventHandler<PageChangingEventArgs> PageChanging;
         public StartPage()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace Arts_Project
 
         private void game_start_button_Click(object sender, RoutedEventArgs e)
         {
-            PageChanging.Invoke(new Game1_Hand(), new EventArgs());
+            PageChanging.Invoke(new StartPage(), new PageChangingEventArgs(new Game1_Hand()));
         }
     }
 }

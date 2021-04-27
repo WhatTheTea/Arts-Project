@@ -8,8 +8,14 @@
       d:DesignHeight="600" d:DesignWidth="810"
       Title="Слідкуй за руками" >
     <Grid>
-        <StackPanel>
-            <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
                 <Rectangle VerticalAlignment="Top" 
                    HorizontalAlignment="Stretch" 
                    Height="60" 
@@ -22,8 +28,10 @@
                FontSize="48"  
             />
             </Grid>
-            <Grid Margin="10"
-              x:Name="elements_grid">
+            <Grid   Margin="10"
+                    x:Name="elements_grid"
+                    Background="#ebebeb" VerticalAlignment="Top"
+                    Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -65,11 +73,28 @@
                        Drop="Image_Drop"
                        MouseDown="element_MouseDown"/>
             </Grid>
+        <Grid Grid.Row="2"
+              Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        </StackPanel>
+            <Button Margin="175,50"
+                    Content="Перевірити відповідь" FontSize="20" FontStyle="Italic" 
+                    Click="CheckAnswers_Click"
+                    />
+
+        </Grid>
+
+        
         <Grid Margin="10"
               x:Name="fingers_grid"
-              VerticalAlignment="Bottom">
+              VerticalAlignment="Bottom"
+              Background="#ebebeb"
+              Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

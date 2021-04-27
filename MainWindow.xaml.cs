@@ -24,12 +24,13 @@ namespace Arts_Project
         {
             InitializeComponent();
             StartPage.PageChanging += ChangePage;
+            Game1_Hand.PageChanging += ChangePage;
             this.Content = new StartPage();
         }
 
-        void ChangePage(object page, EventArgs e)
+        void ChangePage(object sender, PageChangingEventArgs eventArgs)
         {
-            this.Content = page;
+            this.Content = eventArgs.TargetPage;
         }
     }
 }
