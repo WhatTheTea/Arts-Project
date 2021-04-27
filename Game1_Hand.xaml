@@ -35,15 +35,30 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Image Source="res/img/soil.png"
-                   Grid.Column="0"/>
+                       x:Name="soil_img"
+                   Grid.Column="0"
+                   AllowDrop="True"
+                   Drop="Image_Drop"/>
                 <Image Source="res/img/wind.png"
-                   Grid.Column="1"/>
+                       x:Name="wind_img"
+                   Grid.Column="1"
+                   AllowDrop="True"
+                       Drop="Image_Drop"/>
                 <Image Grid.Column="2" 
-                   Source="res/img/fire.png"/>
+                       x:Name="fire_img"
+                   Source="res/img/fire.png"
+                   AllowDrop="True"
+                       Drop="Image_Drop"/>
                 <Image Source="res/img/water.png"
-                   Grid.Column="3"/>
+                       x:Name="water_img"
+                   Grid.Column="3"
+                   AllowDrop="True"
+                       Drop="Image_Drop"/>
                 <Image Source="res/img/ingot.png"
-                   Grid.Column="4"/>
+                       x:Name="ingot_img"
+                   Grid.Column="4"
+                   AllowDrop="True"
+                       Drop="Image_Drop"/>
             </Grid>
 
         </StackPanel>
@@ -61,15 +76,30 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Image Source="res/img/fingers/finger_5.png"
-                   Grid.Column="0"/>
+                   Grid.Column="0"
+                   x:Name="finger_first"
+                   MouseDown="finger_MouseDown"
+                   DragEnter="Image_DragEnter"/>
             <Image Source="res/img/fingers/finger_4.png"
-                   Grid.Column="1"/>
+                   Grid.Column="1"
+                   x:Name="finger_second"
+                   MouseDown="finger_MouseDown"
+                   DragEnter="Image_DragEnter"/>
             <Image Grid.Column="2" 
-                   Source="res/img/fingers/finger_3.png"/>
+                   Source="res/img/fingers/finger_3.png"
+                   x:Name="finger_third"
+                   MouseDown="finger_MouseDown"
+                   DragEnter="Image_DragEnter"/>
             <Image Source="res/img/fingers/finger_2.png"
-                   Grid.Column="3"/>
+                   Grid.Column="3"
+                   x:Name="finger_fourth"
+                   MouseDown="finger_MouseDown"
+                   DragEnter="Image_DragEnter"/>
             <Image Source="res/img/fingers/finger_1.png"
-                   Grid.Column="4"/>
+                   Grid.Column="4"
+                   x:Name="finger_fifth"
+                   MouseDown="finger_MouseDown"
+                   DragEnter="Image_DragEnter"/>
         </Grid>
     </Grid>
 
