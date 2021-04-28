@@ -20,14 +20,13 @@ namespace Arts_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Balance balance = new Balance(50, "M");
         public MainWindow()
         {
             InitializeComponent();
             StartPage.PageChanging += ChangePage;
             Game1_Hand.PageChanging += ChangePage;
             this.Content = new StartPage();
-
-            new Balance();
         }
 
         void ChangePage(object sender, PageChangingEventArgs e)

@@ -53,7 +53,7 @@ namespace Arts_Project
 				{ ingot_img, ingot_img.Source }
 			};
 
-			Label_Balance.Content = Balance.StrToLabel();
+			Label_Balance.Content = MainWindow.balance.StrToLabel();
 		}
 		private void finger_MouseDown(object sender, MouseButtonEventArgs e)
 		{
