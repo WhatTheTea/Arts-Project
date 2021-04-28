@@ -24,7 +24,7 @@ namespace Arts_Project
         public StartPage()
         {
             InitializeComponent();
-            Label_Balance.Content = MainWindow.balance.StrToLabel();
+            Label_Balance.Content = App.balance.StrToLabel();
         }
 
         private void game_start_button_Click(object sender, RoutedEventArgs e)

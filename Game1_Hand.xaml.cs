@@ -53,7 +53,7 @@ namespace Arts_Project
 				{ ingot_img, ingot_img.Source }
 			};
 
-			Label_Balance.Content = MainWindow.balance.StrToLabel();
+			Label_Balance.Content = App.balance.StrToLabel();
 		}
 		private void finger_MouseDown(object sender, MouseButtonEventArgs e)
 		{
@@ -92,10 +92,8 @@ namespace Arts_Project
 
             if (IsAnswersCorrect)
             {
+
                 MessageBox.Show($"Ви успішно завершили першу гру\nВаш баланс поповнено на NUMBER мудр", "Вітання", MessageBoxButton.OK, MessageBoxImage.Information);
-				//
-				////Пополнение баланса
-				//
 				PageChanging.Invoke(new Game1_Hand(), new PageChangingEventArgs(new StartPage()));
             } else
             {

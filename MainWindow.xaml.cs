@@ -20,7 +20,7 @@ namespace Arts_Project
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static Balance balance = new Balance(50, "M");
+       
         public MainWindow()
         {
             InitializeComponent();
