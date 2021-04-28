@@ -17,8 +17,12 @@ namespace Arts_Project
         private const string startingCurrency = "M";
 
         public const int game1_reward = 100;
+        public const int game1_penalty = 2;
 
         public static Balance balance = new Balance(startingBalance, startingCurrency);
+
+        public static void Game1_Reward() => balance.Add(game1_reward);
+        public static void Game1_Penalty() => balance.Sub(game1_penalty);
     }
 
 }

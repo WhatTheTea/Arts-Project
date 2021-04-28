@@ -10,8 +10,33 @@ namespace Arts_Project
     {
         private int have;
         private string currency;
-        public string Currency => currency;
-        public int Have => have;
+        public string Currency
+        {
+            get
+            {
+                return currency;
+            }
+            set
+            {
+                currency = value;
+                BalanceChanged.Invoke(Currency, new EventArgs());
+            }
+        }
+
+        public int Have
+        {
+            get
+            {
+                return have;
+            }
+            set
+            {
+                have = value;
+                BalanceChanged.Invoke(Have, new EventArgs());
+            }
+        }
+
+        public event EventHandler BalanceChanged;
 
         public Balance() {
             have = 0;
@@ -28,7 +53,16 @@ namespace Arts_Project
             currency = startingCurrency;
         }
         public string StrToLabel() => "Баланс: " + have + " " + currency;
-        public void Add(int num) => have += num;
-        public void Sub(int num) => have -= num;
+        public void Add(int num)
+        {
+            have += num;
+            BalanceChanged.Invoke("Add", new EventArgs());
+        }
+
+        public void Sub(int num)
+        {
+            have -= num;
+            BalanceChanged.Invoke("Sub", new EventArgs());
+        }
     }
 }

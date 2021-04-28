@@ -52,8 +52,12 @@ namespace Arts_Project
 				{ water_img, water_img.Source },
 				{ ingot_img, ingot_img.Source }
 			};
-
-			Label_Balance.Content = App.balance.StrToLabel();
+			Update();
+			App.balance.BalanceChanged += Update;
+			void Update(object sender = null, EventArgs e = null)
+			{
+				Label_Balance.Content = App.balance.StrToLabel();
+			}
 		}
 		private void finger_MouseDown(object sender, MouseButtonEventArgs e)
 		{
@@ -82,24 +86,28 @@ namespace Arts_Project
 
         private void CheckAnswers_Click(object sender, RoutedEventArgs e)
         {
-			bool IsFirstCorrect, IsSecondCorrect, IsThirdCorrect, IsFourthCorrect, IsFifthCorrect;
-			IsFirstCorrect = finger_first.Source == water_img.Source;
-			IsSecondCorrect = finger_second.Source == ingot_img.Source;
-			IsThirdCorrect = finger_third.Source == soil_img.Source;
-			IsFourthCorrect = finger_fourth.Source == fire_img.Source;
-			IsFifthCorrect = finger_fifth.Source == wind_img.Source;
-			bool IsAnswersCorrect = IsFirstCorrect && IsSecondCorrect && IsThirdCorrect && IsFourthCorrect && IsFifthCorrect;
+			List<bool> Answers = new List<bool>{ 
+				finger_first.Source == water_img.Source,
+				finger_second.Source == ingot_img.Source,
+				finger_third.Source == soil_img.Source,
+				finger_fourth.Source == fire_img.Source,
+				finger_fifth.Source == wind_img.Source };
+			var CorrectAnswers = from answer in Answers
+								 where answer is true
+								 select answer;
+			bool IsAnswersCorrect = CorrectAnswers.Count() == Answers.Count;
 
             if (IsAnswersCorrect)
             {
-
-                MessageBox.Show($"Ви успішно завершили першу гру\nВаш баланс поповнено на NUMBER мудр", "Вітання", MessageBoxButton.OK, MessageBoxImage.Information);
+				App.Game1_Reward();
+                MessageBox.Show($"Ви успішно завершили першу гру\nВаш баланс поповнено на {App.game1_reward} мудр", "Вітання", MessageBoxButton.OK, MessageBoxImage.Information);
 				PageChanging.Invoke(new Game1_Hand(), new PageChangingEventArgs(new StartPage()));
             } else
             {
+				App.Game1_Penalty();
 				MessageBox.Show("На жаль, ви не вгадали за що відповідають пальці\n" +
-					$"Правильних відповідей: NUMBER\n" +
-					$"З вашого балансу знято NUMBER мудри","Подумайте ще", MessageBoxButton.OK,MessageBoxImage.Error);
+					$"Правильних відповідей: {CorrectAnswers.Count()}\n" +
+					$"З вашого балансу знято {App.game1_penalty} мудри","Подумайте ще", MessageBoxButton.OK,MessageBoxImage.Error);
             }
         }
 

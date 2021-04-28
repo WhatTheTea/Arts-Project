@@ -24,7 +24,12 @@ namespace Arts_Project
         public StartPage()
         {
             InitializeComponent();
-            Label_Balance.Content = App.balance.StrToLabel();
+            Update();
+            App.balance.BalanceChanged += Update;
+            void Update(object sender = null, EventArgs e = null)
+            {
+                Label_Balance.Content = App.balance.StrToLabel();
+            }
         }
 
         private void game_start_button_Click(object sender, RoutedEventArgs e)
