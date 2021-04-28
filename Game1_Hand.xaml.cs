@@ -52,6 +52,8 @@ namespace Arts_Project
 				{ water_img, water_img.Source },
 				{ ingot_img, ingot_img.Source }
 			};
+
+			Label_Balance.Content = Balance.StrToLabel();
 		}
 		private void finger_MouseDown(object sender, MouseButtonEventArgs e)
 		{
@@ -69,6 +71,7 @@ namespace Arts_Project
 				element.Source = dragdrop_img.Source;
 				dragdrop_img.Opacity = 0.3;
 				dragdrop_img.IsEnabled = false;
+				element.Cursor = Cursors.Hand;
 			}
 		}
 
@@ -104,16 +107,17 @@ namespace Arts_Project
 
         private void element_MouseDown(object sender, MouseButtonEventArgs e)
 		{
-			Image finger = (from img in fingers
-							where img.Source == ((Image)sender).Source
-							select img).SingleOrDefault<Image>();
+			Image finger = (from img in this.fingers
+							where img.Source == (sender as Image).Source
+							select img).SingleOrDefault();
 
 			if (finger != default(Image))
 			{	
 				finger.Opacity = 1;
 				finger.IsEnabled = true;
+				(sender as Image).Cursor = Cursors.Arrow;
 
-				((Image)sender).Source = elements_source_og[(Image)sender];
+				(sender as Image).Source = elements_source_og[sender as Image];
 			}
 		}
 	}

@@ -34,6 +34,12 @@
                Content="Обрати рівень"
                IsEnabled="False"
                Margin="30,15,30,0" FontSize="36"/>
+            <Label x:Name="Label_Balance"
+                   HorizontalAlignment="Center" 
+                   FontSize="24"
+                   Content="SAMPLE TEXT"
+                   Background="#bebebe"
+                   />
         </StackPanel>
     </Grid>
 </Page>

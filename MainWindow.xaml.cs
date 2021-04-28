@@ -28,9 +28,9 @@ namespace Arts_Project
             this.Content = new StartPage();
         }
 
-        void ChangePage(object sender, PageChangingEventArgs eventArgs)
+        void ChangePage(object sender, PageChangingEventArgs e)
         {
-            this.Content = eventArgs.TargetPage;
+            this.Content = e.TargetPage;
         }
     }
 }
