@@ -26,6 +26,8 @@ namespace Arts_Project
             StartPage.PageChanging += ChangePage;
             Game1_Hand.PageChanging += ChangePage;
             this.Content = new StartPage();
+
+            new Balance();
         }
 
         void ChangePage(object sender, PageChangingEventArgs e)

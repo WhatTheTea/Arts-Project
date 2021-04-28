@@ -8,13 +8,27 @@ namespace Arts_Project
 {
     public class Balance
     {
-        private static int have;
-        public static int Have => have;
+        private int have;
+        private string currency;
+        public string Currency => currency;
+        public int Have => have;
 
-        public Balance()
-        {
-            have = 50; //Starting balance
+        public Balance() {
+            have = 0;
+            currency = "";
         }
-        public static string StrToLabel() => "Баланс: " + have;
+        public Balance(int startingBalance)
+        {
+            have = startingBalance;
+            currency = "";
+        }
+        public Balance(int startingBalance, string startingCurrency)
+        {
+            have = startingBalance;
+            currency = startingCurrency;
+        }
+        public string StrToLabel() => "Баланс: " + have + " " + currency;
+        public void Add(int num) => have += num;
+        public void Sub(int num) => have -= num;
     }
 }
