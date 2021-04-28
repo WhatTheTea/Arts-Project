@@ -25,6 +25,9 @@ namespace Arts_Project
 		private Dictionary<Image, ImageSource> elements_source_og;
 		private Image dragdrop_img;
 
+		private static void Game1_Reward() => App.balance.Add(App.game1_reward);
+		private static void Game1_Penalty() => App.balance.Sub(App.game1_penalty);
+
 		public Game1_Hand()
 		{
 			InitializeComponent();
@@ -99,15 +102,15 @@ namespace Arts_Project
 
             if (IsAnswersCorrect)
             {
-				App.Game1_Reward();
-                MessageBox.Show($"Ви успішно завершили першу гру\nВаш баланс поповнено на {App.game1_reward} мудр", "Вітання", MessageBoxButton.OK, MessageBoxImage.Information);
+				Game1_Reward();
+                MessageBox.Show($"Ви успішно завершили першу гру\nВаш баланс поповнено на {App.game1_reward} {App.balance.Currency}", "Вітання", MessageBoxButton.OK, MessageBoxImage.Information);
 				PageChanging.Invoke(new Game1_Hand(), new PageChangingEventArgs(new StartPage()));
             } else
             {
-				App.Game1_Penalty();
-				MessageBox.Show("На жаль, ви не вгадали за що відповідають пальці\n" +
+				Game1_Penalty();
+				if(!App.balance.IsBalanceZero) MessageBox.Show("На жаль, ви не вгадали за що відповідають пальці\n" +
 					$"Правильних відповідей: {CorrectAnswers.Count()}\n" +
-					$"З вашого балансу знято {App.game1_penalty} мудри","Подумайте ще", MessageBoxButton.OK,MessageBoxImage.Error);
+					$"З вашого балансу знято {App.game1_penalty} {App.balance.Currency}","Подумайте ще", MessageBoxButton.OK,MessageBoxImage.Error);
             }
         }
 

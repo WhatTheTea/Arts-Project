@@ -13,6 +13,20 @@ namespace Arts_Project
     /// </summary>
     public partial class App : Application
     {
+        App()
+        {
+            balance.BalanceChanged += Game_Over;
+        }
+
+        private void Game_Over(object sender, EventArgs e)
+        {
+            if (balance.IsBalanceZero)
+            {
+                MessageBox.Show("На жаль, ви не змогли розгадати загадки мудр", "Гру Закінчено", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MainWindow.Close();
+            }
+        }
+
         private const int startingBalance = 50;
         private const string startingCurrency = "M";
 
@@ -20,9 +34,6 @@ namespace Arts_Project
         public const int game1_penalty = 2;
 
         public static Balance balance = new Balance(startingBalance, startingCurrency);
-
-        public static void Game1_Reward() => balance.Add(game1_reward);
-        public static void Game1_Penalty() => balance.Sub(game1_penalty);
     }
 
 }

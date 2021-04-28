@@ -10,6 +10,7 @@ namespace Arts_Project
     {
         private int have;
         private string currency;
+        private bool negative;
         public string Currency
         {
             get
@@ -35,6 +36,19 @@ namespace Arts_Project
                 BalanceChanged.Invoke(Have, new EventArgs());
             }
         }
+        public bool Negative
+        {
+            get
+            {
+                return negative;
+            }
+            set
+            {
+                negative = value;
+            }
+        }
+
+        public bool IsBalanceZero => have < 1;
 
         public event EventHandler BalanceChanged;
 
@@ -62,6 +76,7 @@ namespace Arts_Project
         public void Sub(int num)
         {
             have -= num;
+            if (IsBalanceZero && !Negative) have = 0;
             BalanceChanged.Invoke("Sub", new EventArgs());
         }
     }
